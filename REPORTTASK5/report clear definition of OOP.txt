@@ -1,0 +1,118 @@
+Report on Object-Oriented Programming Concepts in Dart
+
+Abstract Classes:
+In Dart, abstract classes are used as blueprints or templates for other classes. They cannot be directly instantiated and serve as a contract for subclasses to follow. Abstract classes can contain abstract methods that are declared but not implemented. Subclasses must provide their own implementation for these abstract methods.
+
+Example:
+abstract class Animal {
+  void makeSound(); // Abstract method
+
+  void sleep() {
+    print('Zzzz'); // Concrete method
+  }
+}
+
+class Dog extends Animal {
+  void makeSound() {
+    print('Woof!');
+  }
+}
+
+class Cat extends Animal {
+  void makeSound() {
+    print('Meow!');
+  }
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+Static:
+In Dart, the keyword "static" is used to define class-level members that are shared among all instances of a class. Static members are associated with the class itself rather than with specific instances. They can be accessed directly from the class without the need to create an object.
+
+Example:
+class MathUtils {
+  static int add(int a, int b) {
+    return a + b;
+  }
+}
+
+int result = MathUtils.add(5, 3);
+print(result); // Output: 8
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+Encapsulation:
+Encapsulation in Dart involves bundling data and methods together within a class and controlling access to them using access modifiers. Dart provides three access modifiers: public, private, and protected. Public members are accessible from anywhere, private members are only accessible within the same library or file, and protected members are accessible within the same library or file and subclasses.
+
+Example:
+class Person {
+  String _name; // Private member
+  int _age; // Private member
+
+  String getName() {
+    return _name;
+  }
+
+  void setName(String newName) {
+    _name = newName;
+  }
+
+  int getAge() {
+    return _age;
+  }
+
+  void setAge(int newAge) {
+    if (newAge >= 0) {
+      _age = newAge;
+    }
+  }
+}
+
+Person person = Person();
+person.setName('John');
+person.setAge(25);
+
+print(person.getName()); // Output: John
+print(person.getAge()); // Output: 25
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Polymorphism:
+Polymorphism in Dart allows objects of different classes to be treated as objects of a common superclass. It enables a single interface or method to be used with different types of objects. Polymorphism can be achieved through method overriding and method overloading.
+
+Example:
+class Shape {
+  double calculateArea() {
+    return 0.0;
+  }
+}
+
+class Circle extends Shape {
+  double radius;
+
+  Circle(this.radius);
+
+  @override
+  double calculateArea() {
+    return 3.14 * radius * radius;
+  }
+}
+
+class Rectangle extends Shape {
+  double width;
+  double height;
+
+  Rectangle(this.width, this.height);
+
+  @override
+  double calculateArea() {
+    return width * height;
+  }
+}
+
+Shape circle = Circle(5.0);
+Shape rectangle = Rectangle(4.0, 6.0);
+
+print(circle.calculateArea()); // Output: 78.5
+print(rectangle.calculateArea()); // Output: 24.0
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+In conclusion, abstract classes provide blueprints for subclasses, static members are associated with the class itself, encapsulation bundles data and methods together while controlling access, and polymorphism allows objects of different classes to be treated interchangeably. These concepts are fundamental to object-oriented programming in Dart and are essential for creating modular, reusable, and maintainable code.
+
+
+
+
